@@ -10,6 +10,12 @@
 import sys
 import re
 import subprocess
+import shutil # later copy to all dirs
+
+#X-XX
+dest = 'ide/Hack Hooks Demo Materials/Templates/Custom-Quixe'
+#dest = 'ide/Hack Hooks Demo Materials/Release/interpreter'
+#dest = 'lib'
 
 regex_debug = re.compile(';;;.+$', re.M)
 
@@ -28,18 +34,26 @@ def compress_source(target, srcls):
     if (ret):
         raise Exception('Process result code %d' % (ret,))
 
+#X-XX
 compress_source(
-    'lib/glkote.min.js', [
-        'src/prototype-1.6.1.js',
+    dest + '/glkote.min.js', [
+        'src/prototype-1.7.js',
         'src/glkote/glkote.js',
         'src/glkote/dialog.js',
         'src/glkote/glkapi.js',
         ])
 
+#X-XX
 compress_source(
-    'lib/quixe.min.js', [
+    dest + '/quixe.min.js', [
         'src/quixe/quixe.js',
         'src/quixe/gi_dispa.js',
         'src/quixe/gi_load.js',
+        ])
+
+#X-XX
+compress_source(
+    dest + '/hack_hooks.min.js', [
+        'src/hack_hooks/hack_hooks.js',
         ])
 

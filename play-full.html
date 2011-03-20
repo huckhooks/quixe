@@ -15,6 +15,7 @@ body {
   height: 100%;
 }
 
+/*X-XX heigh smaller*/
 #gameport {
   position: absolute;
   overflow: hidden;
@@ -23,16 +24,29 @@ body {
   background: #CCAA88;
   margin: 0px;
 }
+<!--
+-->
 
 </style>
 
-<script src="src/prototype-1.6.1.js" type="text/javascript"></script>
+<!-- 
+<script src="lib/hack_hooks.min.js" type="text/javascript"></script>
+<script src="lib/glkote.min.js" type="text/javascript"></script>
+<script src="lib/quixe.min.js" type="text/javascript"></script>
+-->
+
+<!--X-XX -->
+<script src="src/hack_hooks/hack_hooks.js" type="text/javascript"></script>
+
+<script src="src/prototype-1.7.js" type="text/javascript"></script>
 <script src="src/glkote/glkote.js" type="text/javascript"></script>
 <script src="src/glkote/dialog.js" type="text/javascript"></script>
 <script src="src/glkote/glkapi.js" type="text/javascript"></script>
 <script src="src/quixe/quixe.js" type="text/javascript"></script>
 <script src="src/quixe/gi_dispa.js" type="text/javascript"></script>
 <script src="src/quixe/gi_load.js" type="text/javascript"></script>
+<!-- 
+-->
 
 <script type="text/javascript">
 game_options = {
@@ -41,11 +55,10 @@ game_options = {
 };
 </script>
 
-<script src="stories/glulxercise.ulx.js" type="text/javascript"></script>
+<script src="ide/Hack Hooks Demo Materials/Release/interpreter/Hack Hooks Demo.gblorb.js" type="text/javascript"></script>
 
 </head>
 <body>
-
 <div id="gameport">
 <div id="windowport">
 <noscript><hr>

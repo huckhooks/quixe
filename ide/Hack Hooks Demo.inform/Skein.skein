@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skein rootNode="node-0x98b7120" xmlns="http://www.logicalshift.org.uk/IF/Skein">
+  <generator>GNOME Inform 7</generator>
+  <activeNode nodeId="node-0x98b7120"/>
+  <item nodeId="node-0x98b7120">
+    <command xml:space="preserve">- start -</command>
+    <result xml:space="preserve">
+
+
+Hack Hooks Demo
+An Interactive Fiction by Hack Hooks
+Release 1 / Serial number 110320 / Inform 7 build 6G60 (I6/v6.32 lib 6/12N) SD
+
+Hack Hooks demo
+You are in a deep cave where some wizard of code changed the world. Only a little wizard, and only a little bit. But now walkhalftroughs can be transfered and tried by copypasting urls.
+
+The original quixe url. Url: http://eblong.com/zarf/glulx/quixe/
+
+The custom quixe url. Url: https://github.com/huckhooks/quixe
+
+The inform7 url. Url: http://inform7.com/
+
+You can also see a testing toy, an url bar, a back button, a copy paste, a browsie and an image of the ide here.
+
+&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="0">NO</temporary>
+    <annotation xml:space="preserve"></annotation>
+    <children>
+      <child nodeId="node-0x98b71f8"/>
+    </children>
+  </item>
+  <item nodeId="node-0x98b71f8">
+    <command xml:space="preserve">x toy</command>
+    <result xml:space="preserve">A little toy. First thing the Wizard drops in a new project.
+
+&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="0">NO</temporary>
+    <annotation xml:space="preserve">***</annotation>
+  </item>
+</Skein>

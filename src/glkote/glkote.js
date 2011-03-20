@@ -118,6 +118,8 @@ function glkote_init(iface) {
   }
 
   windowdic = new Hash();
+  //X-XX x 
+  HackHooks.windowdic = windowdic;
 
   if (iface.windowport)
       windowport_id = iface.windowport;
@@ -886,6 +888,8 @@ function accept_inputset(arg) {
       if (Prototype.Browser.MobileSafari)
         inputel.writeAttribute('autocapitalize', 'off');
       if (argi.type == 'line') {
+    	//X-XX x
+    	HackHooks.notify_new_win(win.id);
         inputel.onkeypress = evhan_input_keypress;
         inputel.onkeydown = evhan_input_keydown;
         if (argi.initial)
@@ -1121,9 +1125,12 @@ function show_loading() {
    the Prototype library doesn't *have* a function to insert arbitrary
    text into an element.
 */
+//XXX-
 function insert_text(el, val) {
-  var nod = document.createTextNode(val);
-  el.appendChild(nod);
+	if( ! HackHooks.transform_output(el, val)) {
+	  var nod = document.createTextNode(val);
+	  el.appendChild(nod);
+	}
 }
 
 /* Remove all children from a DOM element.
@@ -1211,6 +1218,7 @@ function submit_line_input(win, inputel, termkey) {
    is why most of the invocations pass three arguments instead of four.
 */
 function send_response(type, win, val, val2) {
+
   if (disabled)
     return;
 
@@ -1224,6 +1232,8 @@ function send_response(type, win, val, val2) {
     res.value = val;
     if (val2)
       res.terminator = val2;
+    //X-XX x
+    HackHooks.gotLine(res);
   }
   else if (type == 'char') {
     res.window = win.id;
@@ -1255,7 +1265,6 @@ function send_response(type, win, val, val2) {
       }
     });
   }
-
   game_interface.accept(res);
 }
 
@@ -1746,6 +1755,9 @@ function build_evhan_hyperlink(winid, linkval) {
 }
 
 /* ---------------------------------------------- */
+
+//X-XX x
+HackHooks.send_response = send_response;
 
 /* End of GlkOte namespace function. Return the object which will
    become the GlkOte global. */

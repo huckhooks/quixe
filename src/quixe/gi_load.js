@@ -473,8 +473,11 @@ function start_game(image) {
     all_options.vm.prepare(image, all_options);
 
     /* Now fire up the display library. This will take care of starting
-       the VM engine, once the window is properly set up. */
+       the VM engine, once the window is properly set up. */    
     all_options.io.init(all_options);
+    
+    //X-XX x
+    HackHooks.started(image);
 }
 
 /* End of GiLoad namespace function. Return the object which will
