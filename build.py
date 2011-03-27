@@ -10,18 +10,23 @@
 import sys
 import re
 import subprocess
+
+#X-XX
+import os
 import shutil # later copy to all dirs
 
 #X-XX
-dest = 'ide/Hack Hooks Demo Materials/Templates/Custom-Quixe'
-#dest = 'ide/Hack Hooks Demo Materials/Release/interpreter'
-#dest = 'lib'
+os.chdir(os.path.dirname(__file__))
+dest_lib = 'lib'
+dest_template = 'ide/Hack_Hooks_Demo Materials/Templates/Custom-Quixe'
+dest_release = 'ide/Hack_Hooks_Demo Materials/Release/interpreter'
 
 regex_debug = re.compile(';;;.+$', re.M)
 
 def compress_source(target, srcls):
+    full_target = os.path.join(dest_lib,target)
     print 'Writing', target
-    proc = subprocess.Popen(['java', '-jar', 'tools/yuicompressor-2.4.2.jar', '--type', 'js', '-o', target],
+    proc = subprocess.Popen(['java', '-jar', 'tools/yuicompressor-2.4.2.jar', '--type', 'js', '-o', full_target],
                             stdin=subprocess.PIPE)
     for src in srcls:
         fl = open(src)
@@ -33,27 +38,28 @@ def compress_source(target, srcls):
     ret = proc.wait()
     if (ret):
         raise Exception('Process result code %d' % (ret,))
+    #XXX
+    shutil.copyfile(full_target,os.path.join(dest_template,target))
+    shutil.copyfile(full_target,os.path.join(dest_release,target))
 
-#X-XX
 compress_source(
-    dest + '/glkote.min.js', [
+    'glkote.min.js', [
         'src/prototype-1.7.js',
         'src/glkote/glkote.js',
         'src/glkote/dialog.js',
         'src/glkote/glkapi.js',
         ])
 
-#X-XX
 compress_source(
-    dest + '/quixe.min.js', [
+    'quixe.min.js', [
         'src/quixe/quixe.js',
         'src/quixe/gi_dispa.js',
         'src/quixe/gi_load.js',
         ])
 
-#X-XX
 compress_source(
-    dest + '/hack_hooks.min.js', [
+    'hack_hooks.min.js', [
         'src/hack_hooks/hack_hooks.js',
         ])
 
+print "done"

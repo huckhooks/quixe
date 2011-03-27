@@ -1127,7 +1127,7 @@ function show_loading() {
 */
 //XXX-
 function insert_text(el, val) {
-	if( ! HackHooks.transform_output(el, val)) {
+	if( ! HackHooks.insert_text(el, val)) {
 	  var nod = document.createTextNode(val);
 	  el.appendChild(nod);
 	}
