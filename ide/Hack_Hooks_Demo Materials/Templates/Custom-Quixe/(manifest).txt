@@ -9,7 +9,7 @@
 ! of the play page:
 
 [INTERPRETERVERSION]
-Quixe for Inform 7 (v. 1.1.1)<br>+ bookmark-history (0.1)<br>+ browsies (0.1)
+Quixe for Inform 7 (v. 1.1.1)<br>+ bookmark-history (0.2)<br>+ browsies (0.2)
 []
 
 [INTERPRETERURL]
