@@ -74,8 +74,13 @@ var all_options = {
     use_query_story: true, // use the ?story= URL parameter (if provided)
     default_story: null,   // story URL to use if not otherwise set
     set_page_title: true,  // set the window title to the game name
-    proxy_url: 'http://zcode.appspot.com/proxy/'
+    //X-XX
+    //proxy_url: 'http://zcode.appspot.com/proxy/'
+    proxy_url: HackHooks.proxy_url()
 };
+
+//X-XX
+HackHooks.set_quixe_options(all_options)
 
 var gameurl = null;  /* The URL we are loading. */
 var metadata = {}; /* Title, author, etc -- loaded from Blorb */

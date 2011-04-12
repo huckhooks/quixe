@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Skein rootNode="node-0x8b3e0e8" xmlns="http://www.logicalshift.org.uk/IF/Skein">
+<Skein rootNode="node-0x92f60d8" xmlns="http://www.logicalshift.org.uk/IF/Skein">
   <generator>GNOME Inform 7</generator>
-  <activeNode nodeId="node-0x8b3e0e8"/>
-  <item nodeId="node-0x8b3e0e8">
+  <activeNode nodeId="node-0x92f60d8"/>
+  <item nodeId="node-0x92f60d8">
     <command xml:space="preserve">- start -</command>
     <result xml:space="preserve">
 
 
-Hack Hooks Demo
-An Interactive Fiction by Hack Hooks
-Release 1 / Serial number 110321 / Inform 7 build 6G60 (I6/v6.32 lib 6/12N) SD
+Hack_Hooks_Demo
+An Interactive Fiction by Huck Hooks
+Release 1 / Serial number 110412 / Inform 7 build 6G60 (I6/v6.32 lib 6/12N) SD
 
-Hack Hooks demo
-You are in a deep cave where some wizard of code changed the world. Only a little wizard, and only a little bit. But now walkhalftroughs can be transfered and tried by copypasting urls.
+Hack hooks demo
+You are in a deep cave where a little wizard of code changed the world. Only a little wizard, and only a little bit. But now walkhalftroughs can be transfered and tried by copypasting urls. And they can be even shorter than a short while ago, thanks to a cleaning tool called ajax! Now working with the brooms and buckets..
 
-The original quixe url. Url: http://eblong.com/zarf/glulx/quixe/
+A door leads go{north} to the Toolbox.
 
-The custom quixe url. Url: https://github.com/huckhooks/quixe
+A examine{linkbox} stands here.
 
-The inform7 url. Url: http://inform7.com/
+And a examine{featurelist of the bookmark history}.
 
-You can also see a testing toy, an url bar, a back button, a copy paste, a title, a browsie in an iframe, a browsie in a popup, a browsie in this window and an image of the ide here.
+And the examine{browsie demos}.
+
+You can also see an examine{testing foo}, an examine{project homepage}, an examine{sourcecode} and an examine{default homepage} here.
 
 &gt;</result>
     <commentary xml:space="preserve"></commentary>
@@ -29,10 +31,10 @@ You can also see a testing toy, an url bar, a back button, a copy paste, a title
     <temporary score="0">NO</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x8b3e1c0"/>
+      <child nodeId="node-0x92f61b0"/>
     </children>
   </item>
-  <item nodeId="node-0x8b3e1c0">
+  <item nodeId="node-0x92f61b0">
     <command xml:space="preserve">#you can comment this way</command>
     <result xml:space="preserve">&gt;</result>
     <commentary xml:space="preserve"></commentary>

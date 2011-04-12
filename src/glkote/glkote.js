@@ -1125,9 +1125,9 @@ function show_loading() {
    the Prototype library doesn't *have* a function to insert arbitrary
    text into an element.
 */
-//XXX-
+//X-XX
 function insert_text(el, val) {
-	if( ! HackHooks.insert_text(el, val)) {
+	if( ! HackHooks.insert_special_text(el, val)) {
 	  var nod = document.createTextNode(val);
 	  el.appendChild(nod);
 	}
@@ -1233,7 +1233,7 @@ function send_response(type, win, val, val2) {
     if (val2)
       res.terminator = val2;
     //X-XX x
-    HackHooks.gotLine(res);
+    HackHooks.got_line(res); // may update, such as reject save in reply
   }
   else if (type == 'char') {
     res.window = win.id;
