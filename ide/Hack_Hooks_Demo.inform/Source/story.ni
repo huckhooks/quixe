@@ -10,7 +10,7 @@ The Hack hooks demo is a room. "You are in a deep cave where a little wizard of 
 
 The testing foo is here. the description is "A little [item described]. First thing the Wizard drops in a new project."
 
-The project homepage is here with description "[item described]. Popup: http://daqgit.appspot.com/".
+The project homepage is here with description "[item described]. Popup: /".
 
 
 Part - Links
