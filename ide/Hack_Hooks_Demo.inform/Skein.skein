@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Skein rootNode="node-0x92f60d8" xmlns="http://www.logicalshift.org.uk/IF/Skein">
+<Skein rootNode="node-0x939e8f0" xmlns="http://www.logicalshift.org.uk/IF/Skein">
   <generator>GNOME Inform 7</generator>
-  <activeNode nodeId="node-0xa4cb040"/>
-  <item nodeId="node-0x92f60d8">
+  <activeNode nodeId="node-0x939e8f0"/>
+  <item nodeId="node-0x939e8f0">
     <command xml:space="preserve">- start -</command>
     <result xml:space="preserve">
 
@@ -31,12 +31,12 @@ You can also see an examine{testing foo}, an examine{project homepage}, an exami
     <temporary score="0">NO</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x92f61b0"/>
-      <child nodeId="node-0x92f6288"/>
-      <child nodeId="node-0x976cec8"/>
+      <child nodeId="node-0x939e9c8"/>
+      <child nodeId="node-0x939eaa0"/>
+      <child nodeId="node-0x981a5f0"/>
     </children>
   </item>
-  <item nodeId="node-0x92f61b0">
+  <item nodeId="node-0x939e9c8">
     <command xml:space="preserve">#you can comment this way</command>
     <result xml:space="preserve">&gt;</result>
     <commentary xml:space="preserve"></commentary>
@@ -45,7 +45,7 @@ You can also see an examine{testing foo}, an examine{project homepage}, an exami
     <temporary score="0">NO</temporary>
     <annotation xml:space="preserve">***</annotation>
   </item>
-  <item nodeId="node-0x92f6288">
+  <item nodeId="node-0x939eaa0">
     <command xml:space="preserve">x door</command>
     <result xml:space="preserve">You see nothing special about the examine{toolbox door}.
 
@@ -58,10 +58,10 @@ Room menu: {look}.
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x92f6360"/>
+      <child nodeId="node-0x939eb78"/>
     </children>
   </item>
-  <item nodeId="node-0x92f6360">
+  <item nodeId="node-0x939eb78">
     <command xml:space="preserve">s</command>
     <result xml:space="preserve">You can&apos;t go that way.
 
@@ -74,10 +74,10 @@ Room menu: {look}.
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x92f6438"/>
+      <child nodeId="node-0x939ec50"/>
     </children>
   </item>
-  <item nodeId="node-0x92f6438">
+  <item nodeId="node-0x939ec50">
     <command xml:space="preserve">enter door</command>
     <result xml:space="preserve">(first opening the examine{toolbox door})
 
@@ -95,10 +95,10 @@ Room menu: {look}.
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x92f6510"/>
+      <child nodeId="node-0x939ed28"/>
     </children>
   </item>
-  <item nodeId="node-0x92f6510">
+  <item nodeId="node-0x939ed28">
     <command xml:space="preserve">x firefox</command>
     <result xml:space="preserve">A examine{firefox multibrowser extension} called &quot;Open With&quot;. Add browsers in &quot;extras/addons/config&quot;. Add to tab and contextmenu. (click here for more). Popup: https://addons.mozilla.org/de/firefox/addon/open-with/
 
@@ -111,10 +111,10 @@ Room menu: {look}.
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x92f65e8"/>
+      <child nodeId="node-0x939ee00"/>
     </children>
   </item>
-  <item nodeId="node-0x92f65e8">
+  <item nodeId="node-0x939ee00">
     <command xml:space="preserve">x server</command>
     <result xml:space="preserve">The examine{project demo server} adds some online-store for histories. Popup: http://daqgit.appspot.com/
 
@@ -127,10 +127,10 @@ Room menu: {look}.
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x92f66c0"/>
+      <child nodeId="node-0x939eed8"/>
     </children>
   </item>
-  <item nodeId="node-0x92f66c0">
+  <item nodeId="node-0x939eed8">
     <command xml:space="preserve">s</command>
     <result xml:space="preserve">
 Hack hooks demo
@@ -155,10 +155,10 @@ Room menu: {look}.
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x976c808"/>
+      <child nodeId="node-0x981a008"/>
     </children>
   </item>
-  <item nodeId="node-0x976c808">
+  <item nodeId="node-0x981a008">
     <command xml:space="preserve">x foo</command>
     <result xml:space="preserve">A little examine{testing foo}. First thing the Wizard drops in a new project.
 
@@ -171,10 +171,10 @@ Room menu: {look}.
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x976c8e0"/>
+      <child nodeId="node-0x981a0e0"/>
     </children>
   </item>
-  <item nodeId="node-0x976c8e0">
+  <item nodeId="node-0x981a0e0">
     <command xml:space="preserve">x demos</command>
     <result xml:space="preserve">In the examine{browsie demos} are an examine{browsie in an iframe}, an examine{browsie in a popup}, an examine{browsie in this window} and an examine{crazy compass}.
 
@@ -187,10 +187,10 @@ Room menu: {look}.
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x976c9b8"/>
+      <child nodeId="node-0x981a1b8"/>
     </children>
   </item>
-  <item nodeId="node-0x976c9b8">
+  <item nodeId="node-0x981a1b8">
     <command xml:space="preserve">x compass</command>
     <result xml:space="preserve">A examine{crazy compass}. Image: waiting.gif
 
@@ -203,10 +203,10 @@ Room menu: {look}.
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x976ca90"/>
+      <child nodeId="node-0x981a290"/>
     </children>
   </item>
-  <item nodeId="node-0x976ca90">
+  <item nodeId="node-0x981a290">
     <command xml:space="preserve">x features</command>
     <result xml:space="preserve">In the examine{featurelist of the bookmark history} are an examine{url bar}, an examine{back button}, an examine{copy paste} and an examine{title}.
 
@@ -219,10 +219,10 @@ Room menu: {look}.
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x976cb68"/>
+      <child nodeId="node-0x981a368"/>
     </children>
   </item>
-  <item nodeId="node-0x976cb68">
+  <item nodeId="node-0x981a368">
     <command xml:space="preserve">look</command>
     <result xml:space="preserve">Hack hooks demo
 You are in a deep cave where a little wizard of code changed the world. Only a little wizard, and only a little bit. But now walkhalftroughs can be transfered and tried by copypasting urls. And they can be even shorter than a short while ago, thanks to a cleaning tool called ajax!
@@ -246,10 +246,10 @@ Room menu: {look}.
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x976cc40"/>
+      <child nodeId="node-0x981a440"/>
     </children>
   </item>
-  <item nodeId="node-0x976cc40">
+  <item nodeId="node-0x981a440">
     <command xml:space="preserve">go north</command>
     <result xml:space="preserve">
 Toolbox
@@ -266,10 +266,10 @@ Room menu: {look}.
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x976cd18"/>
+      <child nodeId="node-0x981a518"/>
     </children>
   </item>
-  <item nodeId="node-0x976cd18">
+  <item nodeId="node-0x981a518">
     <command xml:space="preserve">look here</command>
     <result xml:space="preserve">You can&apos;t see any such thing.
 
@@ -280,7 +280,7 @@ Room menu: {look}.
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
   </item>
-  <item nodeId="node-0x976cec8">
+  <item nodeId="node-0x981a5f0">
     <command xml:space="preserve">x links</command>
     <result xml:space="preserve">In the examine{linkbox} are an examine{original quixe url}, an examine{custom quixe url}, an examine{inform7 url}, an examine{original parchment-proxy url}, an examine{Hucks quixe-clone url} and an examine{Hucks proxy-clone url}.
 
@@ -288,21 +288,21 @@ Room menu: {look}.
 
 &gt;</result>
     <commentary xml:space="preserve"></commentary>
-    <played>YES</played>
+    <played>NO</played>
     <changed>YES</changed>
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0xa4cb040"/>
+      <child nodeId="node-0x981a6c8"/>
     </children>
   </item>
-  <item nodeId="node-0xa4cb040">
+  <item nodeId="node-0x981a6c8">
     <command xml:space="preserve">x url</command>
     <result xml:space="preserve">Which do you mean, the examine{original quixe url}, the examine{custom quixe url}, the examine{inform7 url}, the examine{original parchment-proxy url}, the examine{Hucks quixe-clone url}, the examine{Hucks proxy-clone url} or the examine{url bar}?
 
 &gt;</result>
     <commentary xml:space="preserve"></commentary>
-    <played>YES</played>
+    <played>NO</played>
     <changed>YES</changed>
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
