@@ -13,7 +13,8 @@ import subprocess
 
 #X-XX
 import os
-import shutil # later copy to all dirs
+import shutil
+import subprocess
 
 #X-XX
 os.chdir(os.path.dirname(__file__))
