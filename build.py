@@ -19,8 +19,9 @@ import subprocess
 #X-XX
 os.chdir(os.path.dirname(__file__))
 dest_lib = 'lib'
-dest_template = 'ide/Hack_Hooks_Demo Materials/Templates/Custom-Quixe'
-dest_release = 'ide/Hack_Hooks_Demo Materials/Release/interpreter'
+dest_template = 'Hack_Hooks_Demo Materials/Templates/Custom-Quixe'
+dest_release = 'Hack_Hooks_Demo Materials/Release/interpreter'
+dest_edit = 'edit-i7-lib/js'
 
 regex_debug = re.compile(';;;.+$', re.M)
 
@@ -42,6 +43,7 @@ def compress_source(target, srcls):
     #XXX
     shutil.copyfile(full_target,os.path.join(dest_template,target))
     shutil.copyfile(full_target,os.path.join(dest_release,target))
+    shutil.copyfile(full_target,os.path.join(dest_edit,target))
 
 compress_source(
     'glkote.min.js', [
@@ -61,6 +63,13 @@ compress_source(
 compress_source(
     'hack_hooks.min.js', [
         'src/hack_hooks/hack_hooks.js',
+        ])
+
+compress_source(
+    'edit.min.js', [
+        'src/hack_hooks/hotkeys.js',
+        'src/hack_hooks/hack_hooks_frame.js',
+        'src/hack_hooks/edit.js',
         ])
 
 print "done"
