@@ -1,7 +1,7 @@
 HackHooksFrame.initInParent();
 
-Edit.D = false; //release
-//Edit.D = true; //debug: no game, loads faster
+Edit.SKIP_GAME = false; //release
+//Edit.SKIP_GAME = true; //debug: no game, loads faster
 
 Edit.dump = function() {
   return false;
@@ -73,11 +73,9 @@ Edit.requestSource = function() {
 
   document.title = document.title + " " + document.location
   window.onhashchange = function() {
-    if (! Edit.D)
-      Edit.set_player();
-  };
-  if (! Edit.D)
     Edit.set_player();
+  };
+  Edit.set_player();
 
   this.source_url = Edit.PROJECT_DIR + Edit.PROJECT + '.inform/Source/story.ni'
 
@@ -111,6 +109,8 @@ Edit.requestSource = function() {
   });
 }
 Edit.set_player = function() {
+  if (Edit.SKIP_GAME)
+    return;
   var p = Edit.PLAYER + location.hash;
   console.log(p);
   $('quixeframe').src = Edit.PLAYER + location.hash; //#autoincluded
@@ -118,7 +118,7 @@ Edit.set_player = function() {
 Edit.save_and_run = function() {
   try {
     this.save();
-    if (!this.D)
+    if (! Edit.SKIP_GAME)
       this.run();
   } catch(e) {
     alert("Save-error " + e);
@@ -140,14 +140,70 @@ Edit.save = function() {
   s = s.replace(/\u00A0/g," "); //&nbsp;
   //s = s.unescapeHTML();
   s = s.replace(/-- /g,"\t");
-  s = encode_utf8(s);
-  if(this.D) {
-    console.log(s + "\n\n" + s[0] + " " + s.charCodeAt(0));
-    mozillaSaveFile(q, s);
-  } else {
-    mozillaSaveFile(q, s);
-  }
+  var s2 = encode_utf8(s);
+  if(! Edit.SKIP_GAME)
+    mozillaSaveFile(q, s2);
+  this.save_extension(s);
   return false;
+}
+//TODO: save_extension
+Edit.save_extension = function(s) {
+  l = s.split('\n');
+  //console.log(s);
+  var o = "";
+  var ext = null;
+  for(var i = 0; i < l.length; i++) {
+    var s = l[i];
+    var r;
+    if (r =/\"(.*)\" by \"(.*)\" \[begins here\]./.exec(s)) {
+      console.log(r);
+      o += (r[1] + ' by ' + r[2] + ' begins here.');
+      ext = r;
+    } else if (r = /\[(.* ends here.)\]/.exec(s)) {
+      console.log(s);
+      o += (r[1] + '\n\n---- DOCUMENTATION ----');
+    } else
+      o += (s);
+    o += ("\n");
+  }
+  //console.log("-->\n" + o);
+  console.log(ext);
+  if(ext) {
+    var name = ext[1] + " by " + ext[2] + ".i7x";
+    var file = "Extensions/" + name;
+    file = file.replace(/ /g,"_");
+    var file = /.*\//.exec(document.location)[0] + file;
+    console.log(file);
+    file = getLocalPath(file);
+    console.log("saving ext " + file);
+    var s2 = encode_utf8(o);
+    //if(! Edit.SKIP_GAME)
+    mozillaSaveFile(file, s2);
+
+    Edit.EXT_INSTALLER = Edit.DIR + 'edit-i7-lib/edit_install_extension.py';
+
+    var args = [
+    '-e', getLocalPath(Edit.EXT_INSTALLER),
+    ext[1],ext[2],file
+    ];
+    console.log(JSON.stringify(args));
+
+    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+
+    // create an nsILocalFile for the executable
+    var file = Components.classes["@mozilla.org/file/local;1"]
+    .createInstance(Components.interfaces.nsILocalFile);
+    file.initWithPath(Edit.XTERM);
+
+    // create an nsIProcess
+    var process = Components.classes["@mozilla.org/process/util;1"]
+    .createInstance(Components.interfaces.nsIProcess);
+    process.init(file);
+
+    var me = this;
+    process.runAsync(args, args.length);
+  }
+
 }
 Edit.run = function() {
 

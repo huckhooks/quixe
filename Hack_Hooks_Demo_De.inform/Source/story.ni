@@ -10,9 +10,9 @@ The Lab is east of the Homepage.
 
 Include German by Team GerX.
 
-Include Miniextensions de 24Apr11 by Huck Hooks.
+Include Custom_Quixe_Miniext_De by Huck Hooks.
 
-Release along with the "Custom-Quixe" interpreter and the source text.
+Release along with an interpreter and the source text.
 
 
 Part - Homepage
