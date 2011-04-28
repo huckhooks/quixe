@@ -91,6 +91,16 @@ After looking:
 				say "[bold type][Direction][roman type] irgendwohin, ";
 				
 
+Chapter - Editing
+
+Editing is an action applying to one visible object. 
+Understand "edit [any thing]" as Editing. 
+Understand "edit [any room]" as Editing. 
+
+Carry out Editing:
+	say "/edit [noun]."
+
+
 [Custom_Quixe_Miniext_De ends here.]
 
 Release along with an interpreter and the source text.
@@ -99,8 +109,9 @@ Include German by Team GerX.
 
 The Testpage is a room.
 
-The klein Foo is a person. It is here. The printed name is "klein[^] Foo"
+The kleines Foo is a person. It is here. The printed name is "klein[^] Foo"
 
 The Baz is here.
 
 The Scrollbar is east of the Testpage.
+

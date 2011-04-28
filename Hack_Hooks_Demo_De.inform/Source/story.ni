@@ -4,7 +4,7 @@ Part - Getting started
 
 The Homepage is a room.
 
-The klein Foo is a person. It is here. 
+The kleines Foo is a person. It is here. 
 
 The Lab is east of the Homepage.
 
@@ -19,7 +19,7 @@ Part - Homepage
 
 The Homepage is a room. "Es ist früh am Morgen. Du bist noch schnell auf einer Webseite. Einen Moment vorher folgtest du einem Link in einem Forum. Irgendwas über einen 'custom quixe'. Plötzlich war dir etwas schwindlig, und für einen Moment verschmolzen Realität und Browser. Wahrscheinlich die falsche Menge Kaffee. Ein leichten Nebeneffekt: Wenn du scrollst denkst du in Himmelsrichtungen. Dich erholend liest du weiter."
 
-The klein Foo is a person. The printed name of it is "klein[^] Foo". "Hier ist [the item described]. Es springt herum und singt: Hui hua quiek hoo.".
+The kleines Foo is a person. The printed name of it is "klein[^] Foo". "Hier ist [the item described]. Es springt herum und singt: Hui hua quiek hoo.".
 The description is "[initial appearance] Das erste, was dieser Zauberer mit
  in ein neues Projekt nimmt. Es hält Ausschau nach einer Bar. Es sieht aus wie frisch von Youtube entkommen und scheint sich noch nicht zurecht zu finden.".
 

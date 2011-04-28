@@ -3,8 +3,8 @@
 *.inform/Index/
 *.inform/manifest.plist
 *.inform/notes.rtf
-*.inform/Hack_Hooks_Demo.inform/Metadata.iFiction
 *.inform/Release.blurb
 *.inform/Skein.skein
 *.inform/gameinfo.dbg
 *.inform/Metadata.iFiction
+

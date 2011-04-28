@@ -1,10 +1,60 @@
+/*
+ * setting the hash is done how?
+ * in hack_hooks_frame.
+ */
 HackHooksFrame.initInParent();
 
 Edit.SKIP_GAME = false; //release
 //Edit.SKIP_GAME = true; //debug: no game, loads faster
 
+//TODO: jump to mark
 Edit.dump = function() {
+  console.log("dump");
   return false;
+}
+Edit.find = function(name) {
+  var lineno = 10;
+  var el = $('editdiv').firstChild;
+  var found = false;
+  var rx = new RegExp("The " + name + " (is|are) ","i");
+  while(el) {
+    if (el.nodeName === "#text") {
+      if (rx.exec(el.textContent)) {
+        console.log(el.textContent);
+        found = true;
+        break;
+      }
+    }
+    el = el.nextSibling;
+  }
+  if(found) {
+    el = el.previousSibling;
+    console.log(el);
+    var l = $("linemark");
+    if (l)
+      l.remove();
+
+    //make hash different
+    hash = Base64.decode(location.hash.substring(1));
+    try {
+      hash = JSON.parse(hash);
+    } catch(e) {
+      console.log(e);
+      hash = {};
+    }
+    console.log(hash);
+    if (hash.ct)
+      hash.ct ++;
+    else
+      hash.ct = 1;
+    console.log(hash);
+    HackHooksFrame.last_hash = Base64.encode(JSON.stringify(hash));
+
+    el.insert({
+      "after": '<a name="' + HackHooksFrame.last_hash + '" id="linemark"><hr></a>'
+    });
+    location.hash = HackHooksFrame.last_hash;
+  }
 }
 Edit.next_mode = function() {
   var val = $("mode").textContent;
@@ -73,15 +123,16 @@ Edit.requestSource = function() {
 
   document.title = document.title + " " + document.location
   window.onhashchange = function() {
-    Edit.set_player();
+    console.log("edit.onhashchange");
+    if(location.hash.substring(1) !== HackHooksFrame.last_hash)
+      Edit.set_player();
   };
   Edit.set_player();
 
   this.source_url = Edit.PROJECT_DIR + Edit.PROJECT + '.inform/Source/story.ni'
 
   me = this;
-  new Ajax.Request(this.source_url,
-  {
+  new Ajax.Request(this.source_url, {
     method:'get',
     onSuccess: function(transport) {
       var text = transport.responseText;
