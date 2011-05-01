@@ -98,7 +98,7 @@ Understand "edit [any thing]" as Editing.
 Understand "edit [any room]" as Editing. 
 
 Carry out Editing:
-	say "/edit [noun]."
+	say "/edit [Der noun]."
 
 
 Custom_Quixe_Miniext_De ends here.
@@ -111,7 +111,7 @@ Include German by Team GerX.
 
 The Testpage is a room.
 
-The kleines Foo is a person. It is here. The printed name is "klein[^] Foo"
+The kleine Foo is a person. It is here. The printed name is "klein[^] Foo"
 
 The Baz is here.
 

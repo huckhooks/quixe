@@ -16,7 +16,14 @@ Edit.find = function(name) {
   var lineno = 10;
   var el = $('editdiv').firstChild;
   var found = false;
-  var rx = new RegExp("The " + name + " (is|are) ","i");
+  name = name.replace("Ä","Ae","g");
+  name = name.replace("Ö","Oe","g");
+  name = name.replace("Ü","Ue","g");
+  name = name.replace("ä","ae","g");
+  name = name.replace("ö","oe","g");
+  name = name.replace("ü","ue","g");
+  name = name.replace("ß","ss","g");
+  var rx = new RegExp(name + " (is|are) ","i");
   while(el) {
     if (el.nodeName === "#text") {
       if (rx.exec(el.textContent)) {

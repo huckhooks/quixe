@@ -334,10 +334,10 @@ HackHooks = {
       }
       return true;
     } else if ((url = /^\/edit .*\{(.*)\}.$/.exec(val))) {
-        this.print(val);
       if(this.replaying) {
-        //pass
+         this.print("replay, ignoring: " + val);
       } else {
+        this.print(val);
         this.post_parent(["edit",url[1]]);
       }
       return true;
