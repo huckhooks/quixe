@@ -1,6 +1,8 @@
 * Materials/Release/
-*.inform/Build/
-*.inform/Index/
+*.inform/Build/*
+!*.inform/Build/makedir-dummy
+*.inform/Index/*
+!*.inform/Index/makedir-dummy
 *.inform/manifest.plist
 *.inform/notes.rtf
 *.inform/Release.blurb
