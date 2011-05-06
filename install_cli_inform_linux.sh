@@ -6,8 +6,6 @@
 
 set -ue
 
-project=$PWD
-
 mkdir -p ~/Inform/download-cli-inform
 cd ~/Inform/download-cli-inform
 wget -c http://inform7.com/download/content/6G60/I7_6G60_Linux_all.tar.gz

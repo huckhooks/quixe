@@ -23,7 +23,9 @@ Edit.find = function(name) {
   name = name.replace("ö","oe","g");
   name = name.replace("ü","ue","g");
   name = name.replace("ß","ss","g");
-  var rx = new RegExp(name + " (is|are) ","i");
+  var rx = "(" + name + " (is|are))"  + "|" + "(def " + name + ")";
+  console.log("rx " + rx);
+  rx = new RegExp(rx,"i");
   while(el) {
     if (el.nodeName === "#text") {
       if (rx.exec(el.textContent)) {
@@ -174,6 +176,10 @@ Edit.set_player = function() {
   $('quixeframe').src = Edit.PLAYER + location.hash; //#autoincluded
 }
 Edit.save_and_run = function() {
+  if (! location.href.match(/file:\/\//)) {
+    alert("This button works only when installed locally and used with firefox on linux.");
+    return;
+  }
   try {
     this.save();
     if (! Edit.SKIP_GAME)

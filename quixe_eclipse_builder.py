@@ -22,8 +22,6 @@ class SilentBuffer:
     def clear(self):
         self.content = []
 
-sys.stdout = SilentBuffer()
-
 project_dir = os.path.dirname(os.path.abspath(__file__))
 cli_inform7 = os.path.expanduser("~/Inform/cli/bin/i7")
 i7_project = project_dir
@@ -45,10 +43,21 @@ def build_story():
     
 def build():
     build_story()
+    dst = "DeletableDummy"
+    if os.path.exists(dst + "-edit.html"):
+        shutil.rmtree(dst + ".inform")
+        shutil.rmtree(dst + " Materials")
+        os.remove(dst + "-edit.html")
 
 if __name__ == '__main__':
-    print "quixe_builder " + __file__
-    build()
+    silent = SilentBuffer()
+    sys.stdout = silent
+    try:    
+        print "quixe_builder " + __file__
+        build()
+    except:
+        silent.verbose()
+        traceback.print_exc()
 
 
     

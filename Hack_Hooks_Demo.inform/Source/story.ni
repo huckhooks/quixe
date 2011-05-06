@@ -6,7 +6,6 @@ Release along with the "Custom-Quixe" interpreter and the source text.
 
 Include Custom_Quixe_Miniext by Huck Hooks.
 
-
 The little foo is a person. "A [item described]. It jumps around and sings: who whoa we woo.".
 The description is "[initial appearance] First thing this Wizard drops in a new project. It is looking for a bar.".
 

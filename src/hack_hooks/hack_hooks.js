@@ -343,7 +343,7 @@ HackHooks = {
       return true;
     } else {
       var match = -1;
-      var rx = /(.*?)(\w\+)?(\w*)\{(.*?)\}(.*?)/g
+      var rx = /(.*?)(.\+)?(\w*)\{(.*?)\}(.*?)/g
       while (url = rx.exec(val)) {
         match = rx.lastIndex;
         if(!url[4]) {
