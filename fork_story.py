@@ -18,12 +18,12 @@ if __name__ == '__main__':
     
     for ext in exts:
         if not os.path.exists(src + ext):
-            raise "src missing " + src + ext
+            raise Exception("src missing " + src + ext)
     
     for ext in exts:
         if os.path.exists(dst + ext):
             if not dst == "DeletableDummy":
-                raise "dst exists " + src + ext
+                raise Exception("dst exists " + src + ext)
             else:
                 shutil.rmtree(dst + ".inform")
                 shutil.rmtree(dst + " Materials")
