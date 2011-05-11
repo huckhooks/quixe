@@ -19,6 +19,7 @@ HackHooks = {
   AJAX_DEBUG: false,
   FAKE_HISTORY: false,
   FAKE_INPUT: false,
+  DEBUG: null,
 
   //"exported" from modules
   main_winid: -1,
@@ -69,8 +70,8 @@ HackHooks = {
   },
   started: function(image) {
     this.post_parent(["started",null])
-    var DEBUG = this.AJAX_DEBUG && location.hash == "";
-    if(DEBUG && this.FAKE_HISTORY) {
+    this.DEBUG = this.AJAX_DEBUG && location.hash == "";
+    if(this.DEBUG && this.FAKE_HISTORY) {
       var json; //move choosen last
       location.hash = " " + Base64.encode(JSON.stringify(this.FAKE_HISTORY));
     }
@@ -130,7 +131,7 @@ HackHooks = {
         me.replaying = false;
         //no url-update needed, would be the same
         me.update_title();
-        if(DEBUG && me.FAKE_INPUT) {
+        if(me.DEBUG && me.FAKE_INPUT) {
           console.log("fake input");
           me.send_response("line",w,me.FAKE_INPUT,null);
         }
@@ -238,6 +239,7 @@ HackHooks = {
     + this.basetitle;
   },
   clean_hyper: function(val) {
+    console.log("clean_hyper>" + val);
     val = val.escapeHTML();
     var match = 0;
     var res = "";
@@ -250,12 +252,11 @@ HackHooks = {
       }
       res += url[1] + url[4] + url[5];
     }
-    if(match)
-      res += val.substr(match);
+    res += val.substr(match);
     return res;
   },
   insert_special_text: function(el, val) {
-    //console.log("insert_text>" + val);
+    console.log("insert_special_text>" + val);
     var url;
     if(url = /^(.*?.). Url: (.*)$/.exec(val)) {
       if (! /^\/|.*:.*/.exec(url[2]) )
@@ -286,7 +287,7 @@ HackHooks = {
         el.appendChild(fel);
       }
       return true;
-    } else if (url = /^(.*?.). Popup: (.*)/.exec(val)) {  //TODO
+    } else if (url = /^(.*)\. Popup: (.*)/.exec(val)) {  //TODO
       if (! /^\/|.*:.*/.exec(url[2]) )
         url[2] = this.BROWSIE_BASE + url[2];
       var ael = new Element('a', {
