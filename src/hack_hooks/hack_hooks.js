@@ -103,17 +103,6 @@ HackHooks = {
       console.log("replay");
       this.do_history();
 
-      //TODO
-      if(this.AJAX)
-        if (parent != window && parent["HackHooksFrame"]) {
-          parent.HackHooksFrame.subframe_started(this);
-        }
-
-      if(DEBUG && this.FAKE_INPUT) {
-        console.log("fake input");
-        var win = this.windowdic.get(this.main_winid);
-        this.send_response("line",win,this.FAKE_INPUT,null);
-      }
     };
     if(! this.AJAX)
       this.finish_started(null);
@@ -122,6 +111,35 @@ HackHooks = {
         read: true
       });
 
+  },
+  do_history: function() {
+    this.log = [];
+    // ?? win geht nicht, _win direkt nicht ??
+    var w = this.windowdic.get(this.main_winid);
+    this.replaying = true;
+    var i = 0;
+    var me = this;
+    function again() {
+      if( i < me.next_log.length) {
+        //console.log("replaying>" + me.next_log[i]);
+        me.send_response("line",w,me.next_log[i],null);
+        i++;
+        setTimeout(again,100);
+        return true;
+      } else {
+        me.replaying = false;
+        //no url-update needed, would be the same
+        me.update_title();
+        if(DEBUG && me.FAKE_INPUT) {
+          console.log("fake input");
+          me.send_response("line",w,me.FAKE_INPUT,null);
+        }
+        return false;
+      }
+    };
+
+    //var r;    while(r = again()) {    };
+    again();
   },
   load_hash: function() {
     var json = location.hash.substring(1);
@@ -191,18 +209,6 @@ HackHooks = {
     last.insert({
       "before": '<hr>'
     });
-  },
-  do_history: function() {
-    this.log = [];
-    var win = this.windowdic.get(this.main_winid);
-    this.replaying = true;
-    for(var i=0; i < this.next_log.length;i++) {
-      //console.log("replaying>" + this.next_log[i]);
-      this.send_response("line",win,this.next_log[i],null);
-    }
-    this.replaying = false;
-    //no url-update needed, would be the same
-    this.update_title();
   },
   hash_change: function() {
     console.log("player.hash_change");
@@ -335,7 +341,7 @@ HackHooks = {
       return true;
     } else if ((url = /^\/edit .*\{(.*)\}.$/.exec(val))) {
       if(this.replaying) {
-         this.print("replay, ignoring: " + val);
+        this.print("replay, ignoring: " + val);
       } else {
         this.print(val);
         this.post_parent(["edit",url[1]]);
