@@ -22,92 +22,6 @@ if the player's command matches the regular expression "^#",
 reject the player's command;
 
 
-Chapter - Hyperlinks
-
-When play begins, if hack_hooked is true, now the left hand status line is "[location]Besitz{}[if the navigation is by thumb] zu Kompass{}[else] zu Daumen{}[end if]".
-
-An object can be autolinked or selflinked. An object is usually autolinked.
-
-Before
-printing the name of a thing which is autolinked when hack_hooked is
-true, say "[character number 1 in the printed name]+scroll{".
-After printing the name of a thing which is autolinked  when hack_hooked is true, say "}".
-
-Before printing the name of a direction  when hack_hooked is true, say "[character number 1 in the printed name]+scroll{".
-After printing the name of a direction  when hack_hooked is true, say "}".
-
-Before
-printing the name of a room which is autolinked  when hack_hooked is
-true, say "[character number 1 in the printed name]+scroll{".
-After printing the name of a room which is autolinked  when hack_hooked is true, say "}".
-
-
-Chapter - Scrolling
-
-Scrolling is an action applying to one visible thing.
-
-Understand "scroll [any room]" as scrolling.
-Understand "scroll [any thing]" as scrolling.
-Understand "scroll [any direction]" as going.
-
-Understand "scroll to [any room]" as scrolling.
-Understand "scroll to [any thing]" as scrolling.
-Understand "scroll to [any direction]" as going.
-
-Carry out scrolling:
-	let the destination be the noun;
-	if the noun is a thing:
-		let the destination be the location of the noun;
-	otherwise if the location is the destination:
-		say "[italic type]->Guck[roman type].";
-		try looking;
-	let the way be the best route from the location to the destination, using doors;
-	while the way is not nothing:
-		let steps be the number of moves from location to destination, using doors;
-		say "[italic type]->[way]. Scrolle von [location], [steps] Seiten übrig.[roman type]";
-		try going the way;
-		let the way be the best route from the location to the destination, using doors;
-	if the location is the destination:
-		if the noun is a thing:
-			say "[italic type]->Untersuche [the noun][roman type].";
-			try examining the noun;
-			if the noun is a person:
-				say "Vorschläge: noch keine.";
-			otherwise:
-				if the noun is carried:
-					say "In deinem Besitz.[line break]";
-					say "Vorschläge: leg [the noun].";
-				otherwise:
-					say "Vorschläge: nimm [the noun].";
-	otherwise:
-		say "Es gibt keinen einfachen Weg nach [the noun]."
-
-
-Chapter - Exitlister
-
-A room can be obscure or  obvious.
-
-After looking:
-	say "[bold type]Nebenan:[roman type] ";
-	repeat with direction running through directions:
-		let over-there be the room direction from the location;
-		if over-there is a room:
-			if over-there is obvious or over-there is visited:
-				say "im [bold type][Direction][roman type] [bold type][the over-there][roman type], ";
-			otherwise:
-				say "[bold type][Direction][roman type] irgendwohin, ";
-
-
-Chapter - Editing
-
-Editing is an action applying to one visible object.
-Understand "edit [any thing]" as Editing.
-Understand "edit [any room]" as Editing.
-
-Carry out Editing:
-	say "/edit [Der noun]."
-
-
 Chapter - Grammatik, Umlaute
 
 An object can be gerx or inform7.
@@ -130,6 +44,126 @@ Rule for printing the name of an object:
 			if autoattributiert:
 				replace the regular expression "e " in d with "[^] ";
 	say "[d]";
+
+
+Chapter - Hyperlinks
+
+When play begins, if hack_hooked is true, now the left hand status line is "[location]Besitz{}[if the navigation is by thumb] zu Kompass{}[else] zu Daumen{}[end if]".
+
+An object can be autolinked or selflinked. An object is usually autolinked.
+
+Before
+printing the name of a thing which is autolinked when hack_hooked is
+true, say "[character number 1 in the printed name]+scroll{".
+After printing the name of a thing which is autolinked  when hack_hooked is true, say "}".
+
+Before printing the name of a direction  when hack_hooked is true, say "[character number 1 in the printed name]+scroll{".
+After printing the name of a direction  when hack_hooked is true, say "}".
+
+Before
+printing the name of a room which is autolinked  when hack_hooked is
+true, say "[character number 1 in the printed name]+scroll{".
+After printing the name of a room which is autolinked  when hack_hooked is true, say "}".
+
+[def eingeschaltete hyperlinker def ausgeschaltete hyperlinker]
+
+The
+ Hyperlinker is male, gerx, a device, switched on. The description
+ is "Mit diesem Ding kann man den Hypertext an und aus schalten. Es ist 
+im Moment[if switched on]an[else]aus[end if]."
+Understand "Hyper/Link" as Hyperlinker.
+The printed name is "[if switched on]eingeschaltete[else]ausgeschaltete[end if] Hyperlinker"
+
+Instead of switching on the Hyperlinker:
+ 	now the hack_hooked is true;
+	now the noun is switched on;
+	say "Nun werden Hyperlinks von [dem Hyperlinker] angezeigt.";
+
+
+Instead of switching off the Hyperlinker:
+	now the hack_hooked is false;
+	now the noun is switched off;
+	say "Nun werden keine Hyperlinks von [dem Hyperlinker] mehr angezeigt.";
+
+
+
+
+Chapter - Scrolling
+
+Scrolling is an action applying to one visible thing.
+
+Understand "scroll [any room]" as scrolling.
+Understand "scroll [any thing]" as scrolling.
+Understand "scroll [any direction]" as going.
+
+Understand "scroll to [any room]" as scrolling.
+Understand "scroll to [any thing]" as scrolling.
+Understand "scroll to [any direction]" as going.
+
+The last destination is a object variable.
+
+Carry out scrolling:
+	let the destination be the noun;
+	if the noun is a thing:
+		let the destination be the location of the noun;
+	otherwise if the location is the destination:
+		say "[italic type]->Guck[roman type].";
+		try looking;
+	let the way be the best route from the location to the destination, using doors;
+	while the way is not nothing:
+		let steps be the number of moves from location to destination, using doors;
+		say "[paragraph break][bold type]->[way]. Scrolle von [location], [steps] Seiten übrig.[roman type]";
+		try going the way;
+		let the way be the best route from the location to the destination, using doors;
+	if the location is the destination:
+		if the noun is a thing:
+			say "[italic type]->Untersuche [the noun][roman type].";
+			try examining the noun;
+			if the noun is a person:
+				say "Vorschläge: noch keine.";
+			otherwise:
+				if the noun is carried:
+					say "In deinem Besitz.[line break]";
+					say "Vorschläge: leg [den noun].";
+				otherwise:
+					say "Vorschläge: nimm [den noun].";
+		now the last destination is the noun;
+	otherwise:
+		say "Es gibt keinen einfachen Weg nach [the noun]."
+
+
+Chapter - Exitlister
+
+A room can be obscure or  obvious.
+
+After looking:
+	say "[bold type]Nebenan:[roman type] ";
+	repeat with direction running through directions:
+		let over-there be the room direction from the location;
+		if over-there is a room:
+			if over-there is obvious or over-there is visited:
+				say "im [bold type][Direction][roman type] [bold type][the over-there][roman type], ";
+			otherwise:
+				say "[bold type][Direction][roman type] irgendwohin, ";
+
+
+Chapter - Editing
+
+Editing the last destination is an action applying to nothing.
+Understand "edit" and "edit2" as Editing the last destination.
+
+Carry out Editing the last destination:
+	say "/edit [The last destination]."
+
+
+
+Editing it is an action applying to one visible object.
+Understand "edit [any thing]" as Editing it.
+Understand "edit [any room]" as Editing it.
+
+Carry out Editing it:
+	say "/edit [Der noun]."
+
 
 
 Chapter - Bequeme Richtungen
@@ -186,6 +220,8 @@ The Raeumlichkeit is a room, female, gerx.
 
 The kleine Foeoe is here, gerx. "[The item described] ist [a item described]."
 
+The Hyperlinker is here.
+
 The rote Feuerwehrmann is here, male, gerx, selbstumlautend. "[The item described] ist [a item described]."
 
 The roetliche Feuerwehrmann is here, male, gerx, selbstumlautend. The printed name is "rötliche Feuerwehrmann". "[The item described] ist [a item described]."
@@ -198,7 +234,7 @@ The leckere Broetchen mit Kaese is here, gerx, selbstattributiert. the printed n
 
 The blau Beerenmarmelade auf Broetchen is here, female, gerx, selbstformatierend. the printed name is "blau[^] Beerenmarmelade auf Brötchen". "[The item described] ist [a item described]."
 
-The Scrollbaer is east of the Raeumlichkeit, male, gerx.
+The Scrollbaer is east of the Raeumlichkeit, male, gerx. Understand "Baer" as Scrollbaer.
 
 The Baez is here, gerx.
 

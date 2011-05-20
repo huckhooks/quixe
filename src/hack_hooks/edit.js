@@ -7,9 +7,76 @@ HackHooksFrame.initInParent();
 Edit.SKIP_GAME = false; //release
 //Edit.SKIP_GAME = true; //debug: no game, loads faster
 
-//TODO: jump to mark
 Edit.dump = function() {
+  var me = this;
   console.log("dump");
+  return false;
+}
+
+Edit.rel_path = function(path) {
+  var p = /.*\//.exec(document.location)[0] + path;
+  return getLocalPath(p);
+}
+
+Edit.run_exe = function(bin,args, callback) {
+  // run a program
+  // https://developer.mozilla.org/en/Code_snippets/Running_applications
+
+  netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+
+  // create an nsILocalFile for the executable
+  var file = Components.classes["@mozilla.org/file/local;1"]
+  .createInstance(Components.interfaces.nsILocalFile);
+  file.initWithPath(bin);
+
+  // create an nsIProcess
+  var process = Components.classes["@mozilla.org/process/util;1"]
+  .createInstance(Components.interfaces.nsIProcess);
+  process.init(file);
+
+  // get notified when process finishes
+  // https://developer.mozilla.org/en/nsIObserver
+
+  var topic = "process-finished";
+
+  function myObserver() {
+    this.register();
+  }
+
+  myObserver.prototype = {
+    observe: function(subject, topic, data) {
+      callback();
+    },
+    register: function() {
+      var observerService = Components.classes["@mozilla.org/observer-service;1"]
+      .getService(Components.interfaces.nsIObserverService);
+      observerService.addObserver(this, topic, false);
+    },
+    unregister: function() {
+      var observerService = Components.classes["@mozilla.org/observer-service;1"]
+      .getService(Components.interfaces.nsIObserverService);
+      observerService.removeObserver(this, topic);
+    }
+  }
+
+  process.runAsync(args, args.length, new myObserver());
+
+}
+Edit.gargoyle = function() {
+
+  var args = [
+  '-e', getLocalPath(Edit.BUILDER),
+  '--wait',
+  this.PROJECT_DIR + this.PROJECT,
+  ];
+  console.log(JSON.stringify(args));
+
+  var me = this;
+  this.run_exe(Edit.XTERM, args, function() {
+    var args = [me.rel_path(me.PROJECT + " Materials/Release/" + me.PROJECT + ".gblorb")];
+    console.log("compiled " + me.PROJECT + " now " + args);
+    me.run_exe("/usr/games/gargoyle-free",args, function(){});
+  })
   return false;
 }
 Edit.find = function(name) {
